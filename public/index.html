@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>App Install Banner Example</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="viewport" content="width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="144x144" href="/icon.png">
+  <script>
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('service-worker.js', {scope: './'})
+        .then(function() {
+          console.log('Service worker register with success!');
+        })
+        .catch(function(err) {
+          console.error('Oops');
+          console.error(err);
+        });
+
+      window.addEventListener('beforeinstallprompt', function(e) {
+        e.userChoice.then(function(choice) {
+          console.log(choice);
+          if (!choice.outcome === 'dismissed') {
+            console.log('User add to the home screen');
+          } else {
+            console.log('User cancelled the home screen');
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>App Install Banner Example</h1>
+</body>
+</html>

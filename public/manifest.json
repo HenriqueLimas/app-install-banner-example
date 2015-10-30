@@ -1,0 +1,12 @@
+{
+  "name": "App Install Banner Example",
+  "simple_name": "App Install Banner",
+  "start_url": "/index.html",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "144x144",
+    "type": "image/png" 
+  }],
+  "display": "fullscreen",
+  "orientation": "landscape"
+}
